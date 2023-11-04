@@ -1,22 +1,23 @@
-import { useEffect } from "react";
+import { useLayoutEffect } from "react";
 import Styles from '../styles/index/index.module.scss';
 import OwnStyles from '../styles/past-work/past-work.module.scss';
-declare var Typewriter: any;
+import Typewriter from 'typewriter-effect';
 
 export default function PastWork() {
-    useEffect(() => {
+    useLayoutEffect(() => {
         document.title = 'PastWork - My Portfolio';
-
-        new Typewriter('#past-work', {
-            strings: document.getElementById('past-work')?.innerText,
-            autoStart: true,
-            delay: 60,
-        })        
-    }, []);
+    });
 
     return (
         <div>
-            <h1 id="past-work" className={Styles.headerText}>PastWork</h1>
+            <h1 id="past-work" className={Styles.headerText}>
+                <Typewriter onInit={(typewriter) => {
+                    typewriter
+                        .changeDelay(60)
+                        .typeString('PastWork')
+                        .start();
+                }}/>
+            </h1>
 
             <div className={OwnStyles.item}>
                 <h3>社食・弁当予約アプリ</h3>

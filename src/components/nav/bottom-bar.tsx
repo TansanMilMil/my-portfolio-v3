@@ -12,7 +12,7 @@ export default function BottomBar() {
                 <div className="col">
                     <div className="d-flex">
                         <div className="ps-3">
-                            <a href="https://github.com/TansanMilMil/my-portfolio/tree/main" target="_blank">
+                            <a href="https://github.com/TansanMilMil/my-portfolio/tree/main" target="_blank" rel="noreferrer noopener">
                                 <FontAwesomeIcon icon={faCodeBranch}/>
                                 main
                             </a>

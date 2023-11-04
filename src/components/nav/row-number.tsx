@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import Styles from '../../styles/index/index.module.scss';
+import { useLocation } from "react-router-dom";
 
 export default function RowNumber() {
     const [numArray, setNumArray] = useState([0]);
-    // const router = useRouter();
+    const location = useLocation();
 
     const createNumArray = (number: number): number[] => {
         const numbers: number[] = [];
@@ -36,11 +37,8 @@ export default function RowNumber() {
     }, []);
 
     useEffect(() => {
-        // router.events.on('routeChangeComplete', handleComplete);
-        // return () => {
-        //     router.events.off('routeChangeComplete', handleComplete);            
-        // }
-    });
+        handleComplete(location.pathname)
+    }, [location]);
 
     return (
         <div className={Styles.rowNumber}>

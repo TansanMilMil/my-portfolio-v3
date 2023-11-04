@@ -23,7 +23,6 @@ export default function TopBar() {
     }, []);
 
     useEffect(() => {
-        console.log('changed');
         handleComplete(location.pathname);
     }, [location]);
 

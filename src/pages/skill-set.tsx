@@ -1,12 +1,13 @@
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import Styles from '../styles/index/index.module.scss';
 import OwnStyles from '../styles/skill-set/skill-set.module.scss';
+import Typewriter from 'typewriter-effect';
 declare var Chart: any;
-declare var Typewriter: any;
 
 export default function SkillSet() {
     const [chartSize, setChartSize] = useState('pc');
     let isResponsive: boolean = false;
+    let myChart: any;
 
     const renderChart = () => {
         const myChartElement: any = document.getElementById('myChart') as any;
@@ -33,7 +34,7 @@ export default function SkillSet() {
         const labels = experience.map(x => x.label);
         const values = experience.map(x => x.value);
 
-        const myChart = new Chart(ctx, {
+        myChart = new Chart(ctx, {
             type: 'bar',
             data: {
                 labels: labels,
@@ -71,28 +72,35 @@ export default function SkillSet() {
         });
     };
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         document.title = 'SkillSet - My Portfolio';
+    });
 
+    useEffect(() => {
         if (document.documentElement.clientWidth <= 950) {
             setChartSize('phone');
             isResponsive = true;
         }
 
-        setTimeout(() => {
-            renderChart();
-        }, 100);
+        renderChart();
 
-        new Typewriter('#skill-set', {
-            strings: document.getElementById('skill-set')?.innerText,
-            autoStart: true,
-            delay: 60,
-        })        
+        return () => {
+            if (myChart) {
+                myChart.destroy();
+            }
+        }
     }, []);
 
     return (
         <div>
-            <h1 id="skill-set" className={Styles.headerText}>SkillSet</h1>
+            <h1 id="skill-set" className={Styles.headerText}>
+                <Typewriter onInit={(typewriter) => {
+                    typewriter
+                        .changeDelay(60)
+                        .typeString('SkillSet')
+                        .start();
+                }}/>
+            </h1>
 
             <div className={OwnStyles.chartArea}>
                 {chartSize === 'pc' &&

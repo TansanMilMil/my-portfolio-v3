@@ -4,27 +4,24 @@ import Styles from '../../styles/index/index.module.scss';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fab } from '@fortawesome/free-brands-svg-icons'
 import { faLaptopCode, faShoePrints, faSmile, faTools, faUserCircle } from '@fortawesome/free-solid-svg-icons';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 library.add(fab, faUserCircle, faTools, faLaptopCode, faShoePrints, faSmile)
 
 export default function Tabs() {
     const [currentPath, setCurrentPath] = useState('');
-    // const router = useRouter();
+    const location = useLocation();
 
-    // const handleComplete = (url: string) => {
-    //     setCurrentPath(location.pathname);
-    // };
+    const handleComplete = (url: string) => {
+        setCurrentPath(location.pathname);
+    };
 
     useEffect(() => {
-        // setCurrentPath(location.pathname);
+        setCurrentPath(location.pathname);
     }, []);
 
     useEffect(() => {
-        // router.events.on('routeChangeComplete', handleComplete);
-        // return () => {
-        //     router.events.off('routeChangeComplete', handleComplete);            
-        // }
-    });
+        handleComplete(location.pathname)
+    }, [location]);
     
     return (
         <div className={`d-flex`}>

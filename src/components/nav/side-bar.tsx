@@ -4,28 +4,25 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fab } from '@fortawesome/free-brands-svg-icons'
 import { faChevronDown, faFolderOpen, faLaptopCode, faShoePrints, faSmile, faTools, faUserCircle } from '@fortawesome/free-solid-svg-icons';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 library.add(fab, faChevronDown, faFolderOpen, faUserCircle, faTools, faLaptopCode, faShoePrints, faSmile)
 
 export default function SideBar() {
     const [currentPath, setCurrentPath] = useState('');
-    // const router = useRouter();
+    const location = useLocation();
     
-    // const handleComplete = (url: string) => {
-    //     setCurrentPath(location.pathname);
-    //     window.document.getElementById("main-component")?.scroll(0, 0);
-    // };
+    const handleComplete = (url: string) => {
+        setCurrentPath(location.pathname);
+        window.document.getElementById("main-component")?.scroll(0, 0);
+    };
 
     useEffect(() => {
-        // setCurrentPath(location.pathname);
+        setCurrentPath(location.pathname);
     }, []);
 
     useEffect(() => {
-        // router.events.on('routeChangeComplete', handleComplete);
-        // return () => {
-        //     router.events.off('routeChangeComplete', handleComplete);            
-        // }
-    });
+        handleComplete(location.pathname)
+    }, [location]);
     
     return (
         <div>

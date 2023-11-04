@@ -1,38 +1,50 @@
-import { useEffect } from "react";
+import { useEffect, useLayoutEffect } from "react";
 import Styles from '../styles/index/index.module.scss';
 import OwnStyles from '../styles/activities/activities.module.scss';
+import Typewriter from 'typewriter-effect';
 declare var Luminous: any;
-declare var Typewriter: any;
 
 export default function Activities() {
-    useEffect(() => {
+    useLayoutEffect(() => {
         document.title = 'Activities - My Portfolio';
+    });
 
-        const targetElements = ['.aircon-conf', '.newspi-conf', '.portfolio-conf']
-        targetElements.forEach(element => {
-            new Luminous(document.querySelector(element));
-        });
+    useEffect(() => {
+        const targetSelectors = ['.aircon-conf', '.newspi-conf', '.portfolio-conf']
+        targetSelectors.forEach((selector, i) => {
+            const className = `luminous-target-el-${i}`;
+            const targetEl: HTMLElement = document.querySelector(selector) as HTMLElement;
+            
+            // avoid duplicated applying
+            if (targetEl.classList.contains(className)) {
+                return;
+            }
+            targetEl.classList.add(className);
 
-        new Typewriter('#activities', {
-            strings: document.getElementById('activities')?.innerText,
-            autoStart: true,
-            delay: 60,
-        })        
+            new Luminous(targetEl);
+        });      
     }, []);
 
     return (
         <div>
-            <h1 id="activities" className={Styles.headerText}>Activities</h1>
+            <h1 id="activities" className={Styles.headerText}>
+                <Typewriter onInit={(typewriter) => {
+                    typewriter
+                        .changeDelay(60)
+                        .typeString('Activities')
+                        .start();
+                }}/>
+            </h1>
 
             <div className={OwnStyles.item}>
                 <div className="d-flex align-items-stretch">
                     <div className={OwnStyles.imageHeader}>
-                        <a href="https://tm-progapp.hatenablog.com/" target="_blank">
+                        <a href="https://tm-progapp.hatenablog.com/" target="_blank" rel="noreferrer noopener">
                             <div className={`${OwnStyles.bgImage} ${OwnStyles.blogImage}`}> </div>
                         </a>
                     </div>
                     <div className={`flex-grow-1 ${OwnStyles.body}`}>
-                        <a href="https://tm-progapp.hatenablog.com/" target="_blank">
+                        <a href="https://tm-progapp.hatenablog.com/" target="_blank" rel="noreferrer noopener">
                             <h3>技術ブログ</h3>
                         </a>
                         <div className={OwnStyles.area}>
@@ -47,7 +59,7 @@ export default function Activities() {
             <div className={OwnStyles.item}>
                 <div className="d-flex align-items-stretch">
                     <div className={`flex-grow-1 ${OwnStyles.body}`}>
-                        <a href="https://tm-progapp.hatenablog.com/entry/2020/11/14/002239" target="_blank">
+                        <a href="https://tm-progapp.hatenablog.com/entry/2020/11/14/002239" target="_blank" rel="noreferrer noopener">
                             <h3>AirController</h3>
                         </a>
                         <div className={OwnStyles.area}>
@@ -58,20 +70,20 @@ export default function Activities() {
                         </div>
                         <div className={OwnStyles.area}>
                             <div className={Styles.keyText}>SourceCode</div>
-                            <li><a href="https://github.com/TansanMilMil/webcon-node" target="_blank">Node.js(Raspberry Pi)</a></li>
-                            <li><a href="https://github.com/TansanMilMil/webcon-react" target="_blank">React</a></li>
+                            <li><a href="https://github.com/TansanMilMil/webcon-node" target="_blank" rel="noreferrer noopener">Node.js(Raspberry Pi)</a></li>
+                            <li><a href="https://github.com/TansanMilMil/webcon-react" target="_blank" rel="noreferrer noopener">React</a></li>
                         </div>
                         <div className={OwnStyles.area}>
                             <div className={Styles.keyText}>Configuration</div>
                             <div>
                                 <a className="aircon-conf" href="https://cdn-ak.f.st-hatena.com/images/fotolife/t/tansantktk/20201115/20201115112908.png">
-                                    <img className={OwnStyles.conf} src="https://cdn-ak.f.st-hatena.com/images/fotolife/t/tansantktk/20201115/20201115112908.png"/>
+                                    <img className={OwnStyles.conf} src="https://cdn-ak.f.st-hatena.com/images/fotolife/t/tansantktk/20201115/20201115112908.png" alt="AirController Configuration"/>
                                 </a>
                             </div>
                         </div>
                     </div>                
                     <div className={OwnStyles.imageHeader}>
-                        <a href="https://tm-progapp.hatenablog.com/entry/2020/11/14/002239" target="_blank">
+                        <a href="https://tm-progapp.hatenablog.com/entry/2020/11/14/002239" target="_blank" rel="noreferrer noopener">
                             <div className={`${OwnStyles.bgImage} ${OwnStyles.airconImage}`}> </div>
                         </a>
                     </div>
@@ -81,12 +93,12 @@ export default function Activities() {
             <div className={OwnStyles.item}>
                 <div className="d-flex align-items-stretch">
                     <div className={OwnStyles.imageHeader}>
-                        <a href="https://tm-progapp.hatenablog.com/entry/2020/11/22/122309" target="_blank">
+                        <a href="https://tm-progapp.hatenablog.com/entry/2020/11/22/122309" target="_blank" rel="noreferrer noopener">
                             <div className={`${OwnStyles.bgImage} ${OwnStyles.newsPiImage}`}> </div>
                         </a>
                     </div>
                     <div className={`flex-grow-1 ${OwnStyles.body}`}>
-                        <a href="https://tm-progapp.hatenablog.com/entry/2020/11/22/122309" target="_blank">
+                        <a href="https://tm-progapp.hatenablog.com/entry/2020/11/22/122309" target="_blank" rel="noreferrer noopener">
                             <h3>News-Pi</h3>
                         </a>
                         <div className={OwnStyles.area}>
@@ -96,13 +108,13 @@ export default function Activities() {
                         </div>
                         <div className={OwnStyles.area}>
                             <div className={Styles.keyText}>SourceCode</div>
-                            <li><a href="https://github.com/TansanMilMil/news-pi" target="_blank">Python(Raspberry Pi)</a></li>
+                            <li><a href="https://github.com/TansanMilMil/news-pi" target="_blank" rel="noreferrer noopener">Python(Raspberry Pi)</a></li>
                         </div>
                         <div className={OwnStyles.area}>
                             <div className={Styles.keyText}>Configuration</div>
                             <div>
                                 <a className="newspi-conf" href="https://cdn-ak.f.st-hatena.com/images/fotolife/t/tansantktk/20201121/20201121210720.png">
-                                    <img className={OwnStyles.conf} src="https://cdn-ak.f.st-hatena.com/images/fotolife/t/tansantktk/20201121/20201121210720.png"/>
+                                    <img className={OwnStyles.conf} src="https://cdn-ak.f.st-hatena.com/images/fotolife/t/tansantktk/20201121/20201121210720.png" alt="News-Pi Configuration"/>
                                 </a>
                             </div>
                         </div>
@@ -121,13 +133,13 @@ export default function Activities() {
                         </div>
                         <div className={OwnStyles.area}>
                             <div className={Styles.keyText}>SourceCode</div>
-                            <li><a href="https://github.com/TansanMilMil/my-portfolio" target="_blank">Next.js</a></li>
+                            <li><a href="https://github.com/TansanMilMil/my-portfolio" target="_blank" rel="noreferrer noopener">Next.js</a></li>
                         </div>
                         <div className={OwnStyles.area}>
                             <div className={Styles.keyText}>Configuration</div>
                             <div>
                                 <a className="portfolio-conf" href="images/configuration_portfolio.png">
-                                    <img className={OwnStyles.conf} src="images/configuration_portfolio.png"/>
+                                    <img className={OwnStyles.conf} src="images/configuration_portfolio.png" alt="My Portfolio Configuration"/>
                                 </a>
                             </div>
                         </div>                

@@ -1,27 +1,28 @@
-import { useEffect } from "react";
+import { useLayoutEffect } from "react";
 import Styles from '../styles/index/index.module.scss';
 import OwnStyles from '../styles/profile/profile.module.scss';
-declare var Typewriter: any;
+import Typewriter from 'typewriter-effect';
 
 export default function Profile() {
-    useEffect(() => {
+    useLayoutEffect(() => {
         document.title = 'Profile - My Portfolio';
-
-        new Typewriter('#profile', {
-            strings: document.getElementById('profile')?.innerText,
-            autoStart: true,
-            delay: 60,
-        })
-    }, []);
+    });
 
     return (
         <div>
-            <h1 id="profile" className={Styles.headerText}>Profile</h1>
+            <h1 id="profile" className={Styles.headerText}>
+                <Typewriter onInit={(typewriter) => {
+                    typewriter
+                        .changeDelay(60)
+                        .typeString('Profile')
+                        .start();
+                }}/>
+            </h1>
 
             <div className="row justify-content-center">
                 <div className="col-12 col-sm-5 col-xl-3">
                     <div className={`me-5 mb-5 text-center ${OwnStyles.profile}`}>
-                        <img src="images/profile.png"/>
+                        <img src="images/profile.png" alt="profile"/>
                     </div>
                 </div>
                 <div className="col-12 col-sm-7 col-xl-9">
@@ -51,7 +52,7 @@ export default function Profile() {
                                 現在は、PL、PMとして自社Webアプリの利用ユーザー拡大の為の開発しており、利用者からのフィードバックの反映、技術サポート、アプリの保守がメインの業務です。<br/>
                                 <br/>
                                 フロントエンド・バックエンドの開発からインフラの設計・構築まで、開発に必要な技術は幅広く身に付けてきました。<br/>
-                                業務外では、日々興味を持ったことや学んだことをアウトプットする場として<a href="https://tm-progapp.hatenablog.com/" target="_blank">技術ブログ</a>を運営中です。
+                                業務外では、日々興味を持ったことや学んだことをアウトプットする場として<a href="https://tm-progapp.hatenablog.com/" target="_blank" rel="noreferrer noopener">技術ブログ</a>を運営中です。
                             </div>
                         </div>
                     </div>
