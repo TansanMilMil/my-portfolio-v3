@@ -1,0 +1,68 @@
+name: GitHub Actions
+
+on:
+  push:
+    branches:
+      - "main"
+
+env:
+  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
+  AWS_PAGER: ${{ secrets.AWS_PAGER }}
+  CLOUDFRONT_DISTRIBUTION_ID: ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }}
+  S3_BUCKET_NAME: ${{ secrets.S3_BUCKET_NAME }}
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+
+      - name: docker compose up -d
+        run: docker compose up -d
+
+      - name: npm install
+        run: docker compose exec -T node npm install
+
+      - name: npm run build
+        run: |
+          docker compose exec -T node npm run build
+          tar cvfz ./build.tgz ./build/
+
+      - name: upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: build.tgz
+          path: build.tgz
+
+      - name: docker compose down
+        run: docker compose down
+        if: ${{ always() }}
+
+  deploy:
+    runs-on: ubuntu-22.04
+    needs: build
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+
+      - name: download-artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: build.tgz
+
+      - name: docker compose up -d
+        run: docker compose up -d
+
+      - name: sync AWS S3
+        run: |
+          tar xvfz ./build.tgz
+          docker compose exec -T node aws s3 sync --exact-timestamps ./build s3://$S3_BUCKET_NAME
+          docker compose exec -T node aws s3 cp ./public/robots.txt s3://$S3_BUCKET_NAME
+          docker compose exec -T node aws cloudfront create-invalidation --distribution-id $CLOUDFRONT_DISTRIBUTION_ID --paths "/*"
+
+      - name: docker compose down
+        run: docker compose down
+        if: ${{ always() }}

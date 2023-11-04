@@ -1,6 +1,6 @@
 services:
   node:
-    image: node:21-bullseye
+    build: .
     working_dir: /project
     volumes:
       - .:/project
