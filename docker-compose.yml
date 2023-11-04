@@ -1,0 +1,14 @@
+services:
+  node:
+    image: node:21-bullseye
+    working_dir: /project
+    volumes:
+      - .:/project
+    ports:
+      - 3000:3000
+    tty: true
+    environment:
+      - AWS_ACCESS_KEY_ID
+      - AWS_SECRET_ACCESS_KEY
+      - AWS_DEFAULT_REGION
+      - AWS_PAGER
