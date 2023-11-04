@@ -1,0 +1,56 @@
+@import './styles/colors.scss';
+@import './styles/luminous/luminous-basic.scss';
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  // font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+  //   Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, Segoe UI, 'Helvetica Neue', 'Helvetica', 'Arial', 'Hiragino Kaku Gothic Pro', 'Meiryo', sans-serif;    
+  color: $main-text;
+  background-color: $main-bg;
+  font-size: 14px;
+  letter-spacing: .08em;
+}
+
+a {
+  //color: inherit;
+  color: #dcdcaa;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+svg[data-prefix="fas"] {
+  width: 1rem;
+  margin-right: 0.4rem;
+}
+
+h1 {
+  font-size: 2.5rem;
+  border-bottom: 1px dashed #444;
+  padding-bottom: 0.6rem;
+  margin-bottom: 4rem;
+  padding: 1rem;
+}
+
+::-webkit-scrollbar {
+  width: 14px;
+  height: 14px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #4f4f4f;
+}
+
+::-webkit-scrollbar-track {
+  background-color: $main-bg;
+  border-left: 1px solid #333;
+}
+
+::-webkit-scrollbar-corner {
+  background-color: $main-bg;
+}

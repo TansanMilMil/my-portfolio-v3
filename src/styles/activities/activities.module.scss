@@ -1,0 +1,64 @@
+.item {
+    padding: 2rem;
+    margin: 7rem auto;
+    max-width: 900px;
+    @media screen and (max-width: 960px) {
+        margin: 4rem 0;
+    }
+
+    .imageHeader {
+        .bgImage {
+            width: 300px;
+            height: 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: auto;
+            @media screen and (max-width: 960px) {
+                display: none;
+            }
+        }
+        .blogImage {
+            background-image: url("../../../public/images/home-office-336377_1280.jpg");
+        }
+        .airconImage {
+            background-image: url("../../../public/images/device-3438525_1280.jpg");
+        }
+        .newsPiImage {
+            background-image: url("../../../public/images/smarthome-4447520_1280.jpg");
+        }
+        .portfolioImage {
+            background-image: url("../../../public/images/code-820275_1280.jpg");
+        }
+    }
+    .body {
+        margin: 2rem;
+        min-height: 300px;
+        @media screen and (max-width: 960px) {
+            margin: 0;
+            min-height: initial;
+        }
+
+        h3 {
+            text-align: center;
+            margin: 1rem 0;
+        }
+    }
+}
+
+.area {
+    margin: 2rem 0 0 0;
+}
+
+.conf {
+    width: 100%;
+    max-height: 100px;
+    max-width: 120px;
+    box-shadow: 10px 10px 10px 0px rgba(0, 0, 0, 0.5);
+    border-radius: 4px;
+    margin: 10px;
+    opacity: 0.2;
+    transition: all 0.2s 0s ease;
+    &:hover {
+        opacity: 1.0;
+    }
+}

@@ -1,0 +1,27 @@
+.item {
+    padding: 2rem;
+    margin: 4rem auto;
+    max-width: 900px;
+    h3 {
+        text-align: center;
+        margin: 1rem 0;
+    }
+}
+
+.area {
+    margin: 2rem 0 0 0;
+}
+
+.conf {
+    width: 100%;
+    max-height: 400px;
+    max-width: 400px;
+    box-shadow: 10px 10px 10px 0px rgba(0, 0, 0, 0.5);
+    border-radius: 4px;
+    margin: 10px;
+    opacity: 0.8;
+    transition: all 0.2s 0s ease;
+    &:hover {
+        opacity: 1.0;
+    }
+}
