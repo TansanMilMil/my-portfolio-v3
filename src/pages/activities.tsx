@@ -128,7 +128,7 @@ export default function Activities() {
                         <h3>My Portfolio</h3>
                         <div className={OwnStyles.area}>
                             <div className={Styles.keyText}>Description</div>
-                            <div>今、閲覧頂いているポートフォリオサイトです。Next.jsで某IDE風のUIに仕上げました。</div>
+                            <div>今、閲覧頂いているポートフォリオサイトです。React.jsで某IDE風のUIに仕上げました。</div>
                             <div>AWSのCloudFrontでホスティングしています。</div>
                         </div>
                         <div className={OwnStyles.area}>
@@ -138,8 +138,8 @@ export default function Activities() {
                         <div className={OwnStyles.area}>
                             <div className={Styles.keyText}>Configuration</div>
                             <div>
-                                <a className="portfolio-conf" href="images/configuration_portfolio.png">
-                                    <img className={OwnStyles.conf} src="images/configuration_portfolio.png" alt="My Portfolio Configuration"/>
+                                <a className="portfolio-conf" href="images/my-portofolio-v3-configuration.png">
+                                    <img className={OwnStyles.conf} src="images/my-portofolio-v3-configuration.png" alt="My Portfolio Configuration"/>
                                 </a>
                             </div>
                         </div>                
