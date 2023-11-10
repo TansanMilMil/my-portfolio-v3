@@ -1,16 +1,16 @@
-import Styles from './styles/index/index.module.scss';
-import { Route, Routes } from 'react-router-dom';
-import Contact from './pages/contact';
-import TopBar from './components/nav/top-bar';
-import SideBar from './components/nav/side-bar';
-import Tabs from './components/nav/tabs';
-import RowNumber from './components/nav/row-number';
-import BottomBar from './components/nav/bottom-bar';
-import Home from './pages/home';
-import Activities from './pages/activities';
-import PastWork from './pages/past-work';
-import Profile from './pages/profile';
-import SkillSet from './pages/skill-set';
+import Styles from "./styles/index/index.module.scss";
+import { Route, Routes } from "react-router-dom";
+import Contact from "./pages/contact";
+import TopBar from "./components/nav/top-bar";
+import SideBar from "./components/nav/side-bar";
+import Tabs from "./components/nav/tabs";
+import RowNumber from "./components/nav/row-number";
+import BottomBar from "./components/nav/bottom-bar";
+import Home from "./pages/home";
+import Activities from "./pages/activities";
+import PastWork from "./pages/past-work";
+import Profile from "./pages/profile";
+import SkillSet from "./pages/skill-set";
 
 function App() {
   return (

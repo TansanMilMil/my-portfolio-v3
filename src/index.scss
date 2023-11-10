@@ -1,5 +1,5 @@
-@import './styles/colors.scss';
-@import './styles/luminous/luminous-basic.scss';
+@import "./styles/colors.scss";
+@import "./styles/luminous/luminous-basic.scss";
 
 html,
 body {
@@ -7,11 +7,21 @@ body {
   margin: 0;
   // font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
   //   Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, Segoe UI, 'Helvetica Neue', 'Helvetica', 'Arial', 'Hiragino Kaku Gothic Pro', 'Meiryo', sans-serif;    
+  font-family:
+    "Poppins",
+    -apple-system,
+    BlinkMacSystemFont,
+    Segoe UI,
+    "Helvetica Neue",
+    "Helvetica",
+    "Arial",
+    "Hiragino Kaku Gothic Pro",
+    "Meiryo",
+    sans-serif;
   color: $main-text;
   background-color: $main-bg;
   font-size: 14px;
-  letter-spacing: .08em;
+  letter-spacing: 0.08em;
 }
 
 a {
