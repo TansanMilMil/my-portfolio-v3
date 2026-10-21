@@ -2,7 +2,7 @@ import { useEffect, useLayoutEffect, useState } from "react";
 import Styles from "../styles/index/index.module.scss";
 import OwnStyles from "../styles/skill-set/skill-set.module.scss";
 import Typewriter from "typewriter-effect";
-declare var Chart: any;
+import Chart from "chart.js/auto";
 
 export default function SkillSet() {
   const [chartSize, setChartSize] = useState("pc");
