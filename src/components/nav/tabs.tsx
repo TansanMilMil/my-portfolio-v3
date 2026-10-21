@@ -10,7 +10,7 @@ import {
   faTools,
   faUserCircle,
 } from "@fortawesome/free-solid-svg-icons";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router";
 library.add(fab, faUserCircle, faTools, faLaptopCode, faShoePrints, faSmile);
 
 export default function Tabs() {

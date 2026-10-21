@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Styles from "../../styles/index/index.module.scss";
-import { useLocation } from "react-router-dom";
+import { useLocation } from "react-router";
 
 export default function RowNumber() {
   const [numArray, setNumArray] = useState([0]);

@@ -1,5 +1,5 @@
 import Styles from "./styles/index/index.module.scss";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router";
 import Contact from "./pages/contact";
 import TopBar from "./components/nav/top-bar";
 import SideBar from "./components/nav/side-bar";
